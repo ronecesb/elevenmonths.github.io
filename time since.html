@@ -23,50 +23,63 @@
         /* Heart shape container */
         .heart-container {
             position: relative;
-            width: 300px; /* Adjust the width of the heart */
-            height: 300px; /* Adjust the height of the heart */
-            background-color: white;
+            width: 500px; /* Increased size */
+            height: 500px; /* Increased size */
+            background-color: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
-            clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 50% 75%, 0% 100%, 0% 35%); /* Creates the heart shape */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Heart shape decorations using pseudo elements */
-        .heart-container::before, .heart-container::after {
+        /* Creating the heart shape using pseudo-elements */
+        .heart-container::before,
+        .heart-container::after {
             content: "";
             position: absolute;
-            width: 150px;
-            height: 150px;
+            width: 320px; /* Larger circle size */
+            height: 320px; /* Larger circle size */
             background-color: white;
             border-radius: 50%;
+        }
+
+        /* Left circle of the heart */
+        .heart-container::before {
+            left: -20px; /* Separated the circles more */
             top: 0;
         }
 
-        .heart-container::before {
-            left: 50px; /* Position the left circle */
+        /* Right circle of the heart */
+        .heart-container::after {
+            right: -20px; /* Separated the circles more */
+            top: 0;
         }
 
-        .heart-container::after {
-            right: 50px; /* Position the right circle */
+        /* The V-shaped bottom part of the heart */
+        .heart-container .triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-left: 249px solid transparent; /* Larger triangle base */
+            border-right: 249px solid transparent; /* Larger triangle base */
+            border-top: 330px solid white; /* Larger triangle height */
+            top: 240px; /* Moved triangle up */
         }
 
         .content {
             z-index: 1;
             padding: 20px;
-            font-family: Arial, sans-serif;
             color: rgb(36, 27, 19); /* Text color */
+            position: relative;
         }
 
         h1, .timer, .back-link {
-            font-size: 18px; /* Same font size for heading, timer, and link */
+            font-size: 18px; /* Increased font size */
             font-weight: bold;
             margin: 10px 0; /* Margin between elements */
         }
 
         .back-link {
-            font-size: 16px; /* Slightly smaller size for the link */
+            font-size: 15px; /* Increased link size */
             font-weight: normal; /* Less bold */
             text-decoration: none; /* Remove underline from the link */
             color: rgb(36, 27, 19); /* Link color */
@@ -81,10 +94,13 @@
 
     <div class="heart-container">
         <div class="content">
-            <h1>Here is a little timer of the days/minutes/seconds since we met hehe... can you believe how high it is... we are so soulmates..</h1>
+            <h1>here is a little timer of the days/minutes/seconds since we met hehe... can you believe how high it is... we are so soulmates..
+            ᯓ&hearts;
+            </h1>
             <div class="timer" id="timer"></div>
-            <a href="pageone.html" class="back-link">Go back to the main page</a>
+            <a href="pageone.html" class="back-link">go back to the main page</a>
         </div>
+        <div class="triangle"></div>
     </div>
 
     <script>
@@ -109,4 +125,6 @@
 
 </body>
 </html>
+
+
 
