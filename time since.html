@@ -25,12 +25,31 @@
             position: relative;
             width: 300px; /* Adjust the width of the heart */
             height: 300px; /* Adjust the height of the heart */
+            background-color: white;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: white;
-            clip-path: polygon(50% 0%, 0% 35%, 0% 100%, 50% 65%, 100% 100%, 100% 35%); /* Creates the heart shape */
+            clip-path: polygon(50% 0%, 100% 35%, 100% 100%, 50% 75%, 0% 100%, 0% 35%); /* Creates the heart shape */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Heart shape decorations using pseudo elements */
+        .heart-container::before, .heart-container::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            border-radius: 50%;
+            top: 0;
+        }
+
+        .heart-container::before {
+            left: 50px; /* Position the left circle */
+        }
+
+        .heart-container::after {
+            right: 50px; /* Position the right circle */
         }
 
         .content {
@@ -55,27 +74,6 @@
 
         .back-link:hover {
             text-decoration: underline; /* Underline on hover */
-        }
-
-        /* Optional - Give heart shape a little bit of rounded corners */
-        .heart-container::before,
-        .heart-container::after {
-            content: "";
-            position: absolute;
-            width: 150px;
-            height: 150px;
-            background-color: white;
-            border-radius: 50%;
-        }
-
-        .heart-container::before {
-            left: 50px;
-            top: 0;
-        }
-
-        .heart-container::after {
-            right: 50px;
-            top: 0;
         }
     </style>
 </head>
@@ -111,3 +109,4 @@
 
 </body>
 </html>
+
