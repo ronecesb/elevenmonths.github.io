@@ -20,11 +20,24 @@
             color: rgb(36, 27, 19); /* Keeping your original text color */
         }
 
-        .content {
+        /* Heart shape container */
+        .heart-container {
+            position: relative;
+            width: 300px; /* Adjust the width of the heart */
+            height: 300px; /* Adjust the height of the heart */
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
+            background-color: white;
+            clip-path: polygon(50% 0%, 0% 35%, 0% 100%, 50% 65%, 100% 100%, 100% 35%); /* Creates the heart shape */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .content {
+            z-index: 1;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            color: rgb(36, 27, 19); /* Text color */
         }
 
         h1, .timer, .back-link {
@@ -37,20 +50,43 @@
             font-size: 16px; /* Slightly smaller size for the link */
             font-weight: normal; /* Less bold */
             text-decoration: none; /* Remove underline from the link */
-            color: rgb(36, 27, 19); /* Keeping the link color consistent */
+            color: rgb(36, 27, 19); /* Link color */
         }
 
         .back-link:hover {
             text-decoration: underline; /* Underline on hover */
         }
+
+        /* Optional - Give heart shape a little bit of rounded corners */
+        .heart-container::before,
+        .heart-container::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .heart-container::before {
+            left: 50px;
+            top: 0;
+        }
+
+        .heart-container::after {
+            right: 50px;
+            top: 0;
+        }
     </style>
 </head>
 <body>
 
-    <div class="content">
-        <h1>here is a little timer of the days/minutes/seconds since we met hehe... can you believe how high it is... we are so soulmates..</h1>
-        <div class="timer" id="timer"></div>
-        <a href="pageone.html" class="back-link">go back to the main page</a>
+    <div class="heart-container">
+        <div class="content">
+            <h1>Here is a little timer of the days/minutes/seconds since we met hehe... can you believe how high it is... we are so soulmates..</h1>
+            <div class="timer" id="timer"></div>
+            <a href="pageone.html" class="back-link">Go back to the main page</a>
+        </div>
     </div>
 
     <script>
