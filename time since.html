@@ -23,12 +23,15 @@
         /* Heart shape container */
         .heart-container {
             position: relative;
-            width: 500px; /* Increased size */
-            height: 500px; /* Increased size */
+            width: 40vw; /* Responsive width using viewport width */
+            height: 40vw; /* Responsive height using viewport width */
+            max-width: 400px; /* Maximum width for larger screens */
+            max-height: 400px; /* Maximum height for larger screens */
             background-color: transparent;
             display: flex;
             justify-content: center;
             align-items: center;
+            flex-direction: column; /* Ensures vertical stacking of content */
         }
 
         /* Creating the heart shape using pseudo-elements */
@@ -36,21 +39,23 @@
         .heart-container::after {
             content: "";
             position: absolute;
-            width: 320px; /* Larger circle size */
-            height: 320px; /* Larger circle size */
+            width: 30vw; /* Smaller circle size */
+            height: 30vw; /* Smaller circle size */
+            max-width: 400px; /* Maximum size for larger screens */
+            max-height: 400px; /* Maximum size for larger screens */
             background-color: white;
             border-radius: 50%;
         }
 
         /* Left circle of the heart */
         .heart-container::before {
-            left: -20px; /* Separated the circles more */
+            left: -8vw; /* Circles closer together */
             top: 0;
         }
 
         /* Right circle of the heart */
         .heart-container::after {
-            right: -20px; /* Separated the circles more */
+            right: -8vw; /* Circles closer together */
             top: 0;
         }
 
@@ -58,28 +63,37 @@
         .heart-container .triangle {
             position: absolute;
             width: 0;
-            height: 0;
-            border-left: 249px solid transparent; /* Larger triangle base */
-            border-right: 249px solid transparent; /* Larger triangle base */
-            border-top: 330px solid white; /* Larger triangle height */
-            top: 240px; /* Moved triangle up */
+            border-left: 25.25vw solid transparent; /* Smaller triangle base */
+            border-right: 25.25vw solid transparent; /* Smaller triangle base */
+            max-width: 210px; /* Maximum size for larger screens */
+            border-top: 30vw solid white; /* Adjusted triangle height */
+            top: 23vw; /* Moved triangle up to connect properly */
         }
 
         .content {
             z-index: 1;
-            padding: 20px;
+            padding: 2vw; /* Reduced padding */
             color: rgb(36, 27, 19); /* Text color */
-            position: relative;
+            font-size: 1.2vw; /* Smaller font size */
+            width: 80%; /* Ensure content doesn't overflow */
+            overflow: hidden; /* Hide overflowed content */
+            line-height: 1.2; /* Adjust line height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-direction: column; /* Ensures content is vertically stacked */
+            margin-top: 7vw; /* Increased margin to lower content further */
         }
 
         h1, .timer, .back-link {
-            font-size: 18px; /* Increased font size */
+            font-size: 1.5vw; /* Even smaller font size */
             font-weight: bold;
-            margin: 10px 0; /* Margin between elements */
+            margin: 1vw 0; /* Reduced margin between elements */
         }
 
         .back-link {
-            font-size: 15px; /* Increased link size */
+            font-size: 1.2vw; /* Slightly smaller font size for the link */
             font-weight: normal; /* Less bold */
             text-decoration: none; /* Remove underline from the link */
             color: rgb(36, 27, 19); /* Link color */
@@ -88,6 +102,38 @@
         .back-link:hover {
             text-decoration: underline; /* Underline on hover */
         }
+
+        /* Media Query for Smaller Screens (Mobile) */
+        @media (max-width: 600px) {
+            .heart-container {
+                width: 60vw; /* Adjust for smaller screens */
+                height: 60vw; /* Adjust for smaller screens */
+            }
+
+            .heart-container::before,
+            .heart-container::after {
+                width: 30vw; /* Adjust circle size */
+                height: 30vw; /* Adjust circle size */
+            }
+
+            .heart-container .triangle {
+                border-left: 30vw solid transparent; /* Adjust triangle base */
+                border-right: 30vw solid transparent; /* Adjust triangle base */
+                border-top: 35vw solid white; /* Adjust triangle height */
+                top: 25vw; /* Adjust position for smaller screens */
+            }
+
+            .content {
+                font-size: 3vw; /* Increase text size on mobile */
+                padding: 5vw; /* Adjust padding for smaller screens */
+                margin-top: 10vw; /* Increased margin for mobile to lower the text even more */
+            }
+
+            h1, .timer, .back-link {
+                font-size: 3.5vw; /* Adjust font size for better fit on mobile */
+            }
+        }
+
     </style>
 </head>
 <body>
